@@ -114,8 +114,7 @@ sudo pip install ProgressBar2
 
 Bag file (recorded in CLC building at ELTE):
 
-- [hdl_501.bag.tar.gz](http://www.aisl.cs.tut.ac.jp/databases/hdl_graph_slam/hdl_501.bag.tar.gz) (raw data, 344MB)
-- [hdl_501_filtered.bag.tar.gz](http://www.aisl.cs.tut.ac.jp/databases/hdl_graph_slam/hdl_501_filtered.bag.tar.gz) (downsampled data, 57MB, **Recommended!**)
+- [lidar_indoor.bag](http://www.aisl.cs.tut.ac.jp/databases/hdl_graph_slam/hdl_501.bag.tar.gz) (raw data, 344MB)
 
 ```bash
 rosparam set use_sim_time true
@@ -151,7 +150,7 @@ destination: '/full_path_directory/map.pcd'"
 In this example, we solely captured lidar data in an outdoor setting. The outcome shows distortion and overlapping between the lidar scans. A superior outcome was achieved when comparing it to example 3, where GPS and IMU data were integrated to elevate the pose graph's performance.
 
 Bag file (recorded in an outdoor environment):
-- [hdl_400.bag.tar.gz](http://www.aisl.cs.tut.ac.jp/databases/hdl_graph_slam/hdl_400.bag.tar.gz) (raw data, about 900MB)
+- [lidar_outdoor.bag](http://www.aisl.cs.tut.ac.jp/databases/hdl_graph_slam/hdl_400.bag.tar.gz) (raw data, about 900MB)
 
 ```bash
 rosparam set use_sim_time true
@@ -171,25 +170,10 @@ rosbag play --clock hdl_400.bag
 
 ## Example2 (Outdoor) with IMU, GPS
 
-In this example, we utilizes the GPS data and IMU data to correct the pose graph. As depicted in the images, the building is accurately represented without distortion, providing a clear view of the environment.
+In this example, we utilize the GPS data and IMU data to correct the pose graph. As depicted in the images, the building is accurately represented without distortion, providing a clear view of the environment.
 
 
 <img src="imgs/imugnsslidaroutdoor.png" height="256pix" /> <img src="imgs/lidarimugnss2outdoor.png" height="256pix" />
-
-## Common Problems
-
-### Parameter tuning guide
-
-The mapping quality largely depends on the parameter setting. In particular, scan matching parameters have a big impact on the result. Tune the parameters accoding to the following instructions:
-
-- ***registration_method***
-  **[updated] In short, use FAST_GICP for most cases and FAST_VGICP or NDT_OMP if the processing speed matters** This parameter allows to change the registration method to be used for odometry estimation and loop detection. Note that GICP in PCL1.7 (ROS kinetic) or earlier has a bug in the initial guess handling. **If you are on ROS kinectic or earlier, do not use GICP**.
-
-- ***ndt_resolution***
-  This parameter decides the voxel size of NDT. Typically larger values are good for outdoor environements (0.5 - 2.0 [m] for indoor, 2.0 - 10.0 [m] for outdoor). If you chose NDT or NDT_OMP, tweak this parameter so you can obtain a good odometry estimation result.
-
-- ***other parameters***
-  All the configurable parameters are available in the launch file. Copy a template launch file (hdl_graph_slam_501.launch for indoor, hdl_graph_slam_400.launch for outdoor) and tweak parameters in the launch file to adapt it to your application.
 
 ## License
 

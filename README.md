@@ -1,7 +1,7 @@
 # 3d_lidar_slam
 The ***Pomona 3D Graph Slam offline environment mapping*** project aims to generate the map indoor and outdoor environment based on 3D Graph SLAM with NDT scan matching-based odometry estimation and loop detection. In this project, we utilizes the GPS, IMU to correct the pose graph and compare the performance of mapping between these sensors. 
 
-
+The "Pomona 3D Graph Slam offline environment mapping" project aims to generate the map indoor and outdoor environment based on 3D Graph SLAM with NDT scan matching-based odometry estimation and loop detection. In this project, we utilizes the GPS, IMU to correct the pose graph. 
 
 [![Build](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml/badge.svg)](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml) on melodic & noetic
 

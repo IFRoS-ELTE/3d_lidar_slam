@@ -175,10 +175,6 @@ In this example, we utilize the GPS data and IMU data to correct the pose graph.
 
 <img src="imgs/imugnsslidaroutdoor.png" height="256pix" /> <img src="imgs/lidarimugnss2outdoor.png" height="256pix" />
 
-## License
-
-This package is released under the BSD-2-Clause License.
-
 ## Related packages
 
 - [interactive_slam](https://github.com/koide3/interactive_slam)

@@ -1,5 +1,5 @@
 # 3d_lidar_slam
-The ***Pomona 3D Graph Slam offline environment mapping*** project aims to generate the map indoor and outdoor environment based on 3D Graph SLAM with NDT scan matching-based odometry estimation and loop detection. In this project, we utilizes the GPS, IMU to correct the pose graph and compare the performance of mapping between these sensors. 
+The ***Pomona 3D Graph Slam online environment mapping*** project aims to generate the map indoor and outdoor environments based on 3D Graph SLAM with NDT scan matching-based odometry estimation and loop detection. In this project, we utilizes the GPS, IMU to correct the pose graph and compare the performance of mapping between these sensors. 
 
 
 [![Build](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml/badge.svg)](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml) on melodic & noetic
@@ -61,7 +61,7 @@ In this project, we utilized these following contraints to generate the map.
 - ***Floor plane***
   - */floor_detection/floor_coeffs* (hdl_graph_slam/FloorCoeffs)
 
-This constraint optimizes the graph so that the floor planes (detected by RANSAC) of the pose nodes becomes the same. This is designed to compensate the accumulated rotation error of the scan matching in large flat indoor environments.
+This constraint optimizes the graph so that the floor planes (detected by RANSAC) of the pose nodes becomes the same. This is designed to compensate for the accumulated rotation error of the scan matching in large flat indoor environments.
 
 
 ## Parameters
@@ -179,9 +179,6 @@ In this example, we utilize the GPS data and IMU data to correct the pose graph.
 
 This package is released under the BSD-2-Clause License.
 
-
-Note that the cholmod solver in g2o is licensed under GPL. You may need to build g2o without cholmod dependency to avoid the GPL.
-
 ## Related packages
 
 - [interactive_slam](https://github.com/koide3/interactive_slam)
@@ -191,11 +188,3 @@ Note that the cholmod solver in g2o is licensed under GPL. You may need to build
 
 <!-- <img src="imgs/packages.png"/> -->
 
-## Papers
-Kenji Koide, Jun Miura, and Emanuele Menegatti, A Portable 3D LIDAR-based System for Long-term and Wide-area People Behavior Measurement, Advanced Robotic Systems, 2019 [[link]](https://www.researchgate.net/publication/331283709_A_Portable_3D_LIDAR-based_System_for_Long-term_and_Wide-area_People_Behavior_Measurement).
-
-## Contact
-Kenji Koide, k.koide@aist.go.jp, https://staff.aist.go.jp/k.koide
-
-Active Intelligent Systems Laboratory, Toyohashi University of Technology, Japan [\[URL\]](http://www.aisl.cs.tut.ac.jp)  
-Mobile Robotics Research Team, National Institute of Advanced Industrial Science and Technology (AIST), Japan  [\[URL\]](https://unit.aist.go.jp/hcmrc/mr-rt/contact.html)

@@ -5,7 +5,7 @@ The ***Pomona 3D Graph Slam online environment mapping*** project aims to genera
 [![Build](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml/badge.svg)](https://github.com/koide3/hdl_graph_slam/actions/workflows/build.yml) on melodic & noetic
 
 ## Implementation
-
+# Offline environment
 1. Set ROS parameter for simulated time:
 - Open a terminal and set the *use_sim_time* parameter to true. This is required for working with bag files, as it allows ROS to use simulated time:
 ```bash
@@ -36,13 +36,24 @@ rviz -d hdl_graph_slam.rviz
 rosbag play --clock rosbag_file
 ```
 5. Define the transformation between your sensors (LIDAR, IMU, GPS) and base_link of your system using static_transform_publisher (see line #11, hdl_graph_slam.launch). All the sensor data will be transformed into the common base_link frame, and then fed to the SLAM algorithm.
-
-2. Remap the point cloud topic of ***prefiltering_nodelet***. Like:
-
+# Online environment
+1. Enter the catkin workspace:
+   ```bash
+   cd ep_ws/
+   source /devel/setup.bash
+   ```
+2. Launch hdl_graph_slam nodes
+   ```bash
+   roslaunch hdl_graph_slam hdl_graph_slam_full_6dec_new.launch
+   ```
+3. Open RViz for visualization:
+   - In a new terminal, navigate to the rviz configuration file for HDL Graph SLAM:
 ```bash
-  <node pkg="nodelet" type="nodelet" name="prefiltering_nodelet" ...
-    <remap from="/velodyne_points" to="/rslidar_points"/>
-  ...
+roscd hdl_graph_slam/rviz
+```
+- Now, start RViz with the hdl_graph_slam configuration file:
+```bash
+rviz -d hdl_graph_slam_6dec_new.rviz
 ```
 
 ## Constraints (Edges)
